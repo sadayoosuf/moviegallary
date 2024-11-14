@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="container" >
+    <div class="row mt-5" >
+        {% for i in movie %}
+        <div class="col-sm-4">
+
+            <div class="card mx-auto mb-3" style="width: 18rem;">
+
+  {% if i.image %}
+    <img src="{{ i.image.url }}" class="card-img-top" alt="..." height="200px" width="100%">
+{% else %}
+    <img src="{% static 'path/to/default/image.jpg' %}" class="card-img-top" alt="No Image" height="200px" width="100%">
+{% endif %}
+
+  <div class="card-body">
+    <h5 class="card-title">{{i.title}}</h5>
+    <h6 class="card-text">{{i.year}}</h6>
+<!--      <p class="card-text">{{i.description}}</p>-->
+    <a href="{% url 'app1:details' i.id %}" class="btn text-light" style="background-color:#088395;">Details</a>
+<!--      <a href="{% url 'app1:edit' i.id %}" class="btn text-light" style="background-color:#088395;">Edit</a>-->
+<!--      <a href="{% url 'app1:delete' i.id %}" class="btn text-light" style="background-color:#088395;">Delete</a>-->
+  </div>
+</div>
+        </div>
+        {% endfor %}
+    </div>
+    {{name}}
+</div>
+
+
+{% endblock %}
